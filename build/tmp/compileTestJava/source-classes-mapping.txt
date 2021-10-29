@@ -1,0 +1,18 @@
+arguments/holders/AuthValidationArgumentsHolder.java
+ arguments.holders.AuthValidationArgumentsHolder
+tests/get/GetBoardsValidationTest.java
+ tests.get.GetBoardsValidationTest
+consts/UrlParamValues.java
+ consts.UrlParamValues
+tests/BaseTest.java
+ tests.BaseTest
+arguments/holders/BoardIdValidationArgumentsHolder.java
+ arguments.holders.BoardIdValidationArgumentsHolder
+arguments/providers/BoardIdValidationArgumentsProvider.java
+ arguments.providers.BoardIdValidationArgumentsProvider
+tests/get/GetBoardsTest.java
+ tests.get.GetBoardsTest
+arguments/providers/AuthValidationArgumentsProvider.java
+ arguments.providers.AuthValidationArgumentsProvider
+consts/GetBoardsEndpoint.java
+ consts.GetBoardsEndpoint

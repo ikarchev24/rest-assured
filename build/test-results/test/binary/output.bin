@@ -1,0 +1,11 @@
+½Request URI:	https://api.trello.com/1/members/ivokarchev/boards?token=b5be5cbc855892da95f4182f1b5018bc9ba425057b56979a5bba60cff79a4fa7&key=61f6e2e1819911ecd24e5ca76465980e&fields=id%2Cname
+[
+    {
+        "name": "RestAssured",
+)        "id": "617938f1eaa2fd0e661089dc"
+    },
+    {
+        "name": "Tests",
+)        "id": "617939b4b229cf2b63c07cc5"
+    }
+]
