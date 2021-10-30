@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tests.get.cards.getCardsValidationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-30T06:53:51" hostname="DESKTOP-QP8VQVQ" time="0.007">
-  <properties/>
-  <testcase name="checkGetCardsForBoardWithInvalidId()" classname="tests.get.cards.getCardsValidationTest" time="0.007"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

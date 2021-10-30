@@ -8,7 +8,7 @@ import tests.BaseTest;
 import static consts.UrlParamValues.PATH_PARAM_ID;
 import static org.hamcrest.Matchers.equalTo;
 
-public class getCardsValidationTest extends BaseTest {
+public class GetCardsValidationTest extends BaseTest {
 
     @Test
     public void checkGetCardWithInvalidId() {

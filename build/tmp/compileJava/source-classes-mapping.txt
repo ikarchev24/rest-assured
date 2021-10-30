@@ -1,2 +1,0 @@
-RestAssuredRunner.java
- RestAssuredRunner
