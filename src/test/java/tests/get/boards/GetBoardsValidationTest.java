@@ -9,13 +9,15 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import tests.BaseTest;
 
 import static consts.Endpoints.GET_BOARD_ENDPOINT;
+import static consts.UrlParamValues.EXISTING_BOARD_ID;
+import static consts.UrlParamValues.PATH_PARAM_ID;
 import static org.hamcrest.Matchers.equalTo;
 
 public class GetBoardsValidationTest extends BaseTest {
 
     @ParameterizedTest
     @ArgumentsSource(BoardIdValidationArgumentsProvider.class)
-    public void getBoardWithInvalidId(BoardIdValidationArgumentsHolder argumentsHolder) {
+    public void checkGetBoardWithInvalidId(BoardIdValidationArgumentsHolder argumentsHolder) {
         requestWithAuth()
                 .queryParams(argumentsHolder.getQueryParams())
                 .pathParams(argumentsHolder.getPathParams())
@@ -28,14 +30,14 @@ public class GetBoardsValidationTest extends BaseTest {
 
     @ParameterizedTest
     @ArgumentsSource(AuthValidationArgumentsProvider.class)
-    public void getBoardWithInvalidAuth(AuthValidationArgumentsHolder argumentsHolder) {
+    public void checkGetBoardWithInvalidAuth(AuthValidationArgumentsHolder argumentsHolder) {
         requestWithoutAuth()
                 .queryParams(argumentsHolder.getAuthParams())
-                .pathParam("id", "617938f1eaa2fd0e661089dc")
+                .pathParam(PATH_PARAM_ID, EXISTING_BOARD_ID)
                 .log().uri()
                 .get(GET_BOARD_ENDPOINT)
                 .then()
                 .statusCode(equalTo(401))
-                .body(equalTo("unauthorized permission requested"));
+                .body(equalTo(argumentsHolder.getErrorMessage()));
     }
 }

@@ -6,8 +6,7 @@ import tests.BaseTest;
 
 import static consts.Endpoints.GET_BOARDS_ENDPOINT;
 import static consts.Endpoints.GET_BOARD_ENDPOINT;
-import static consts.UrlParamValues.PATH_PARAM_MEMBER;
-import static consts.UrlParamValues.QUERY_PARAMS_FIELDS;
+import static consts.UrlParamValues.*;
 
 public class GetBoardsTest extends BaseTest {
 
@@ -26,7 +25,7 @@ public class GetBoardsTest extends BaseTest {
     public void checkGetBoard() {
         requestWithAuth()
                 .queryParams(QUERY_PARAMS_FIELDS)
-                .pathParams("id", "617938f1eaa2fd0e661089dc")
+                .pathParams(PATH_PARAM_ID, EXISTING_BOARD_ID)
                 .get(GET_BOARD_ENDPOINT)
                 .then()
                 .statusCode(200)

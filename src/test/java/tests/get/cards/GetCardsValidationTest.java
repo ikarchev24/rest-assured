@@ -11,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import tests.BaseTest;
 
+import static consts.UrlParamValues.EXISTING_CARD_ID;
 import static consts.UrlParamValues.PATH_PARAM_ID;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -44,10 +45,10 @@ public class GetCardsValidationTest extends BaseTest {
     public void checkGetCardWithInvalidAuth(AuthValidationArgumentsHolder argumentsHolder) {
         requestWithoutAuth()
                 .queryParams(argumentsHolder.getAuthParams())
-                .pathParam(PATH_PARAM_ID, "617cd35314124046fc513c02")
+                .pathParam(PATH_PARAM_ID, EXISTING_CARD_ID)
                 .get(Endpoints.GET_CARD_ENDPOINT)
                 .then()
                 .statusCode(equalTo(401))
-                .body(equalTo("unauthorized card permission requested"));
+                .body(equalTo(argumentsHolder.getErrorMessage()));
     }
 }

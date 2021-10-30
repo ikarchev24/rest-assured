@@ -8,7 +8,7 @@ import tests.BaseTest;
 
 import static consts.Endpoints.GET_CARDS_FOR_BOARD_ENDPOINT;
 import static consts.Endpoints.GET_CARDS_LIST_ENDPOINT;
-import static consts.UrlParamValues.PATH_PARAM_ID;
+import static consts.UrlParamValues.*;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 
@@ -17,7 +17,7 @@ public class GetCardsTest extends BaseTest {
     @Test
     public void checkGetCard() {
         requestWithAuth()
-                .pathParam(PATH_PARAM_ID, "617cd35314124046fc513c02")
+                .pathParam(PATH_PARAM_ID, EXISTING_CARD_ID)
                 .get(Endpoints.GET_CARD_ENDPOINT)
                 .then()
                 .statusCode(equalTo(200))
@@ -27,7 +27,7 @@ public class GetCardsTest extends BaseTest {
     @Test
     public void checkGetCardsForBoard() {
         final int listSize = requestWithAuth()
-                .pathParam(PATH_PARAM_ID, "617938f1eaa2fd0e661089dc")
+                .pathParam(PATH_PARAM_ID, EXISTING_BOARD_ID)
                 .get(GET_CARDS_FOR_BOARD_ENDPOINT)
                 .then()
                 .statusCode(equalTo(200))
