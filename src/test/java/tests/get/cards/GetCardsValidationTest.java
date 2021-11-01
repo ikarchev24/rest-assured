@@ -5,8 +5,6 @@ import arguments.holders.CardIdValidationArgumentsHolder;
 import arguments.providers.AuthValidationArgumentsProvider;
 import arguments.providers.CardIdValidationArgumentsProvider;
 import consts.Endpoints;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import tests.BaseTest;
@@ -22,7 +20,7 @@ public class GetCardsValidationTest extends BaseTest {
     public void checkGetCardWithInvalidId(CardIdValidationArgumentsHolder argumentsHolder) {
         requestWithAuth()
                 .pathParams(argumentsHolder.getPathParams())
-                .get(Endpoints.GET_CARD_ENDPOINT)
+                .get(Endpoints.GET_CARD)
                 .then()
                 .statusCode(argumentsHolder.getStatusCode())
                 .body(equalTo(argumentsHolder.getErrorMessage()));
@@ -34,7 +32,7 @@ public class GetCardsValidationTest extends BaseTest {
     public void checkGetCardsForBoardWithInvalidId(CardIdValidationArgumentsHolder argumentsHolder) {
         requestWithAuth()
                 .pathParams(argumentsHolder.getPathParams())
-                .get(Endpoints.GET_CARD_ENDPOINT)
+                .get(Endpoints.GET_CARD)
                 .then()
                 .statusCode(argumentsHolder.getStatusCode())
                 .body(equalTo(argumentsHolder.getErrorMessage()));
@@ -46,7 +44,7 @@ public class GetCardsValidationTest extends BaseTest {
         requestWithoutAuth()
                 .queryParams(argumentsHolder.getAuthParams())
                 .pathParam(PATH_PARAM_ID, EXISTING_CARD_ID)
-                .get(Endpoints.GET_CARD_ENDPOINT)
+                .get(Endpoints.GET_CARD)
                 .then()
                 .statusCode(equalTo(401))
                 .body(equalTo(argumentsHolder.getErrorMessage()));
