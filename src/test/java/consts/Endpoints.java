@@ -11,5 +11,6 @@ public class Endpoints {
     public static final String GET_CARD = "/1/cards/{id}";
     public static final String GET_CARDS_LIST = "/1/lists/{id}/cards";
     public static final String GET_CARDS_FOR_BOARD = "/1/boards/{id}/cards";
+    public static final String DELETE_BOARD = "/1/boards/{id}";
 
 }
