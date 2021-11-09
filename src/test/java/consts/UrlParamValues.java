@@ -8,11 +8,16 @@ public class UrlParamValues {
 
     public static final Map<String, String> QUERY_PARAMS_AUTH = Map.of("key", API_KEY, "token", AUTH_TOKEN);
     public static final Map<String, String> QUERY_PARAMS_FIELDS = Map.of("fields", "id,name");
+
     public static final Map<String, String> PATH_PARAM_MEMBER = Map.of("member", "ivokarchev");
     public static final String PATH_PARAM_ID = "id";
+    public static final String PATH_PARAM_NAME = "name";
 
     public static final String EXISTING_BOARD_ID = "617938f1eaa2fd0e661089dc";
     public static final String EXISTING_CARD_ID = "617cd35314124046fc513c02";
+    public static final String EXISTING_CARD_ID_LIST = "617938f1eaa2fd0e661089dd";
+
+    public static final Map<String, String> QUERY_PARAMS_CREATE_CARD = Map.of("idList", EXISTING_CARD_ID_LIST, "name", "new card");
 
     public static final Map<String, String> ANOTHER_USER_AUTH_QUERY_PARAMS = Map.of(
             "key", "8b32218e6887516d17c84253faf967b6",

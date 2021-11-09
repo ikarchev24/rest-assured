@@ -1,4 +1,4 @@
-package tests.post;
+package tests.post.boards;
 
 import consts.Endpoints;
 import io.restassured.http.ContentType;

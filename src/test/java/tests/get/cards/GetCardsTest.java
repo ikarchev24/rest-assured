@@ -9,7 +9,6 @@ import static consts.Endpoints.GET_CARDS_FOR_BOARD;
 import static consts.Endpoints.GET_CARDS_LIST;
 import static consts.UrlParamValues.*;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItem;
 
 public class GetCardsTest extends BaseTest {
 
@@ -19,6 +18,7 @@ public class GetCardsTest extends BaseTest {
                 .pathParam(PATH_PARAM_ID, EXISTING_CARD_ID)
                 .get(Endpoints.GET_CARD)
                 .then()
+                .log().body()
                 .statusCode(equalTo(200))
                 .body("name", equalTo("To learn Rest-Assured"));
     }
@@ -30,11 +30,12 @@ public class GetCardsTest extends BaseTest {
                 .get(GET_CARDS_FOR_BOARD)
                 .then()
                 .statusCode(equalTo(200))
+                .log().body()
                 .extract()
                 .body()
                 .jsonPath()
                 .getList("$").size();
-        Assertions.assertEquals(3, listSize);
+        Assertions.assertEquals(8, listSize);
     }
 
     @Test
@@ -43,6 +44,7 @@ public class GetCardsTest extends BaseTest {
                 .pathParam(PATH_PARAM_ID, "617938f1eaa2fd0e661089de")
                 .get(GET_CARDS_LIST)
                 .then()
+                .log().body()
                 .statusCode(equalTo(200))
                 .body("[0].name", equalTo("To learn Rest-Assured"));
     }

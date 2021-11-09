@@ -2,7 +2,7 @@ package tests.get.boards;
 
 import arguments.holders.AuthValidationArgumentsHolder;
 import arguments.holders.BoardIdValidationArgumentsHolder;
-import arguments.providers.AuthValidationArgumentsProvider;
+import arguments.providers.AuthGetBoardValidationArgumentsProvider;
 import arguments.providers.BoardIdValidationArgumentsProvider;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -29,7 +29,7 @@ public class GetBoardsValidationTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(AuthValidationArgumentsProvider.class)
+    @ArgumentsSource(AuthGetBoardValidationArgumentsProvider.class)
     public void checkGetBoardWithInvalidAuth(AuthValidationArgumentsHolder argumentsHolder) {
         requestWithoutAuth()
                 .queryParams(argumentsHolder.getAuthParams())
@@ -37,7 +37,7 @@ public class GetBoardsValidationTest extends BaseTest {
                 .log().uri()
                 .get(GET_BOARD)
                 .then()
-                .statusCode(equalTo(401))
+                .statusCode(equalTo(argumentsHolder.getStatusCode()))
                 .body(equalTo(argumentsHolder.getErrorMessage()));
     }
 }

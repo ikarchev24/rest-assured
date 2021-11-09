@@ -2,7 +2,7 @@ package tests.get.cards;
 
 import arguments.holders.AuthValidationArgumentsHolder;
 import arguments.holders.CardIdValidationArgumentsHolder;
-import arguments.providers.AuthValidationArgumentsProvider;
+import arguments.providers.AuthGetCardValidationArgumentsProvider;
 import arguments.providers.CardIdValidationArgumentsProvider;
 import consts.Endpoints;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -39,14 +39,14 @@ public class GetCardsValidationTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(AuthValidationArgumentsProvider.class)
+    @ArgumentsSource(AuthGetCardValidationArgumentsProvider.class)
     public void checkGetCardWithInvalidAuth(AuthValidationArgumentsHolder argumentsHolder) {
         requestWithoutAuth()
                 .queryParams(argumentsHolder.getAuthParams())
                 .pathParam(PATH_PARAM_ID, EXISTING_CARD_ID)
                 .get(Endpoints.GET_CARD)
                 .then()
-                .statusCode(equalTo(401))
+                .statusCode(equalTo(argumentsHolder.getStatusCode()))
                 .body(equalTo(argumentsHolder.getErrorMessage()));
     }
 }
