@@ -12,10 +12,12 @@ public class BoardIdValidationArgumentsProvider implements ArgumentsProvider {
     @Override
     public Stream provideArguments(ExtensionContext context) {
         return Stream.of(
-                new BoardIdValidationArgumentsHolder(Map.of("fields", "id,name"),
-                        Map.of("id", "invalid id"), "invalid id", 400),
-                new BoardIdValidationArgumentsHolder(Map.of("fields", "id,name"),
-                        Map.of("id", "617938f1eaa2fd0e661089db"), "The requested resource was not found.", 404)
+                new BoardIdValidationArgumentsHolder(
+                        Map.of("id", "invalid id"),
+                        "invalid id", 400),
+                new BoardIdValidationArgumentsHolder(
+                        Map.of("id", "617938f1eaa2fd0e661089db"),
+                        "The requested resource was not found.", 404)
         ).map(Arguments::of);
     }
 }

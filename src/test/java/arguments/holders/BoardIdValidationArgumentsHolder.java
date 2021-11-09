@@ -4,21 +4,18 @@ import java.util.Map;
 
 public class BoardIdValidationArgumentsHolder {
 
-    private final Map<String, String> queryParams;
     private final Map<String, String> pathParams;
     private final String errorMessage;
     private final int statusCode;
 
-    public BoardIdValidationArgumentsHolder(Map<String, String> queryParams, Map<String, String> pathParams, String errorMessage, int statusCode) {
-        this.queryParams = queryParams;
+    public BoardIdValidationArgumentsHolder( Map<String, String> pathParams, String errorMessage, int statusCode) {
+
         this.pathParams = pathParams;
         this.errorMessage = errorMessage;
         this.statusCode = statusCode;
     }
 
-    public Map<String, String> getQueryParams() {
-        return queryParams;
-    }
+
 
     public Map<String, String> getPathParams() {
         return pathParams;

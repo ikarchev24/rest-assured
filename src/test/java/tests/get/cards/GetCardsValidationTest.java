@@ -32,7 +32,7 @@ public class GetCardsValidationTest extends BaseTest {
     public void checkGetCardsForBoardWithInvalidId(CardIdValidationArgumentsHolder argumentsHolder) {
         requestWithAuth()
                 .pathParams(argumentsHolder.getPathParams())
-                .get(Endpoints.GET_CARD)
+                .get(Endpoints.GET_CARDS_FOR_BOARD)
                 .then()
                 .statusCode(argumentsHolder.getStatusCode())
                 .body(equalTo(argumentsHolder.getErrorMessage()));

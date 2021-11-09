@@ -19,7 +19,6 @@ public class GetBoardsValidationTest extends BaseTest {
     @ArgumentsSource(BoardIdValidationArgumentsProvider.class)
     public void checkGetBoardWithInvalidId(BoardIdValidationArgumentsHolder argumentsHolder) {
         requestWithAuth()
-                .queryParams(argumentsHolder.getQueryParams())
                 .pathParams(argumentsHolder.getPathParams())
                 .log().uri()
                 .get(GET_BOARD)
