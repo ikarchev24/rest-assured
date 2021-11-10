@@ -23,7 +23,8 @@ public class CreateBoardTest extends BaseTest {
     @Test
     public void checkCreateBoard() {
         String boardName = "New Board " + LocalDateTime.now();
-        Response response = requestWithAuth().body(Map.of("name", boardName))
+        Response response = requestWithAuth()
+                .body(Map.of("name", boardName))
                 .contentType(ContentType.JSON)
                 .post(Endpoints.CREATE_BOARD);
         response.

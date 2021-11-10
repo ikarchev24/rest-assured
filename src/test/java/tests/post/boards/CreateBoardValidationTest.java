@@ -1,6 +1,7 @@
 package tests.post.boards;
 
 import arguments.holders.AuthValidationArgumentsHolder;
+import arguments.holders.BoardNameValidationArgumentsHolder;
 import arguments.providers.AuthCreateBoardValidationArgumentsProvider;
 import arguments.providers.BoardNameValidationArgumentsProvider;
 import consts.Endpoints;
@@ -19,13 +20,13 @@ public class CreateBoardValidationTest extends BaseTest {
 
     @ParameterizedTest
     @ArgumentsSource(BoardNameValidationArgumentsProvider.class)
-    public void checkCreateBoardWithInvalidName(Map bodyParams) {
+    public void checkCreateBoardWithInvalidName(BoardNameValidationArgumentsHolder argumentsHolder) {
         Response response = requestWithAuth()
-                .body(bodyParams)
+                .body(argumentsHolder.getBodyParams())
                 .contentType(ContentType.JSON)
                 .post(Endpoints.CREATE_BOARD);
-        response.then().statusCode(400);
-        Assertions.assertEquals("invalid value for name", response.body().asString());
+        response.then().statusCode(argumentsHolder.getStatusCode());
+        Assertions.assertEquals(argumentsHolder.getErrorMessage(), response.body().asString());
     }
 
     @ParameterizedTest

@@ -18,7 +18,7 @@ public class CreateCardTest extends BaseTest {
     @Test
     public void createCardTest() {
         Response response = requestWithAuth()
-                .queryParams(QUERY_PARAMS_CREATE_CARD)
+                .body(QUERY_PARAMS_CREATE_CARD)
                 .contentType(ContentType.JSON)
                 .post(Endpoints.CREATE_CARD);
         createdCardId = response.then().extract().body().jsonPath().get(PATH_PARAM_ID);
@@ -27,6 +27,7 @@ public class CreateCardTest extends BaseTest {
                 then()
                 .statusCode(equalTo(200))
                 .body(PATH_PARAM_NAME, equalTo(QUERY_PARAMS_CREATE_CARD.get(PATH_PARAM_NAME)));
+
         requestWithAuth()
                 .pathParam(PATH_PARAM_ID, EXISTING_CARD_ID_LIST)
                 .get(Endpoints.GET_CARDS_LIST)
