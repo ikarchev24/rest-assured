@@ -2,7 +2,7 @@ package tests.post.boards;
 
 import arguments.holders.AuthValidationArgumentsHolder;
 import arguments.holders.BoardNameValidationArgumentsHolder;
-import arguments.providers.AuthCreateBoardValidationArgumentsProvider;
+import arguments.providers.AuthCreateDeleteBoardValidationArgumentsProvider;
 import arguments.providers.BoardNameValidationArgumentsProvider;
 import consts.Endpoints;
 import io.restassured.http.ContentType;
@@ -30,7 +30,7 @@ public class CreateBoardValidationTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(AuthCreateBoardValidationArgumentsProvider.class)
+    @ArgumentsSource(AuthCreateDeleteBoardValidationArgumentsProvider.class)
     public void checkCreateBoardWithInvalidAuth(AuthValidationArgumentsHolder argumentsHolder) {
         requestWithoutAuth()
                 .queryParams(argumentsHolder.getAuthParams())
@@ -38,7 +38,7 @@ public class CreateBoardValidationTest extends BaseTest {
                 .contentType(ContentType.JSON)
                 .post(Endpoints.CREATE_BOARD)
                 .then()
-                .statusCode(equalTo(argumentsHolder.getStatusCode()))
+                .statusCode(argumentsHolder.getStatusCode())
                 .body(equalTo(argumentsHolder.getErrorMessage()));
     }
 }

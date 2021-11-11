@@ -10,16 +10,15 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class AuthCreateBoardValidationArgumentsProvider implements ArgumentsProvider {
+public class AuthCreateDeleteCardValidationArgumentsProvider implements ArgumentsProvider {
 
     @Override
     public Stream provideArguments(ExtensionContext context) {
-
         return Stream.of(
                 new AuthValidationArgumentsHolder(Collections.emptyMap(),
                         "invalid key", 401),
                 new AuthValidationArgumentsHolder(Map.of("key", UrlParamValues.API_KEY),
-                        "unauthorized permission requested", 401),
+                        "unauthorized card permission requested", 401),
                 new AuthValidationArgumentsHolder(Map.of("token", UrlParamValues.AUTH_TOKEN),
                         "invalid key", 401)
         ).map(Arguments::of);

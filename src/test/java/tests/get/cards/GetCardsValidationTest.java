@@ -46,7 +46,7 @@ public class GetCardsValidationTest extends BaseTest {
                 .pathParam(PATH_PARAM_ID, EXISTING_CARD_ID)
                 .get(Endpoints.GET_CARD)
                 .then()
-                .statusCode(equalTo(argumentsHolder.getStatusCode()))
+                .statusCode(argumentsHolder.getStatusCode())
                 .body(equalTo(argumentsHolder.getErrorMessage()));
     }
 }

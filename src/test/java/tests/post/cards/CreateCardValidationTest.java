@@ -2,7 +2,7 @@ package tests.post.cards;
 
 import arguments.holders.AuthValidationArgumentsHolder;
 import arguments.holders.CardNameValidationArgumentsHolder;
-import arguments.providers.AuthCreateCardValidationArgumentsProvider;
+import arguments.providers.AuthCreateDeleteCardValidationArgumentsProvider;
 import arguments.providers.CardNameValidationArgumentsProvider;
 import consts.Endpoints;
 import io.restassured.http.ContentType;
@@ -31,7 +31,7 @@ public class CreateCardValidationTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(AuthCreateCardValidationArgumentsProvider.class)
+    @ArgumentsSource(AuthCreateDeleteCardValidationArgumentsProvider.class)
     public void createCardTestWithInvalidAuth(AuthValidationArgumentsHolder argumentsHolder) {
         requestWithoutAuth()
                 .queryParams(argumentsHolder.getAuthParams())
@@ -40,7 +40,7 @@ public class CreateCardValidationTest extends BaseTest {
                 .post(Endpoints.CREATE_CARD)
                 .then()
                 .log().body()
-                .statusCode(equalTo(argumentsHolder.getStatusCode()));
+                .statusCode(argumentsHolder.getStatusCode());
 
     }
 }

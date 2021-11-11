@@ -17,7 +17,7 @@ public class UrlParamValues {
     public static final String EXISTING_CARD_ID = "617cd35314124046fc513c02";
     public static final String EXISTING_CARD_ID_LIST = "617938f1eaa2fd0e661089dd";
 
-    public static final String BOARD_ID_TO_UPDATE = "617d9f2357a76c4228306903";
+    public static final String BOARD_ID_TO_UPDATE = "617939b4b229cf2b63c07cc5";
     public static final String CARD_ID_TO_UPDATE = "618aa9cd96d03a878ddb0aaa";
 
     public static final Map<String, String> QUERY_PARAMS_CREATE_CARD = Map.of("idList", EXISTING_CARD_ID_LIST, "name", "new card");

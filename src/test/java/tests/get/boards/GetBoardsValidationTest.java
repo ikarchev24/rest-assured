@@ -36,7 +36,7 @@ public class GetBoardsValidationTest extends BaseTest {
                 .log().uri()
                 .get(GET_BOARD)
                 .then()
-                .statusCode(equalTo(argumentsHolder.getStatusCode()))
+                .statusCode(argumentsHolder.getStatusCode())
                 .body(equalTo(argumentsHolder.getErrorMessage()));
     }
 }

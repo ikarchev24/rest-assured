@@ -19,7 +19,7 @@ public class GetCardsTest extends BaseTest {
                 .get(Endpoints.GET_CARD)
                 .then()
                 .log().body()
-                .statusCode(equalTo(200))
+                .statusCode(200)
                 .body("name", equalTo("To learn Rest-Assured"));
     }
 
@@ -29,7 +29,7 @@ public class GetCardsTest extends BaseTest {
                 .pathParam(PATH_PARAM_ID, EXISTING_BOARD_ID)
                 .get(GET_CARDS_FOR_BOARD)
                 .then()
-                .statusCode(equalTo(200))
+                .statusCode(200)
                 .log().body()
                 .extract()
                 .body()
@@ -45,7 +45,7 @@ public class GetCardsTest extends BaseTest {
                 .get(GET_CARDS_LIST)
                 .then()
                 .log().body()
-                .statusCode(equalTo(200))
+                .statusCode(200)
                 .body("[0].name", equalTo("To learn Rest-Assured"));
     }
 }
